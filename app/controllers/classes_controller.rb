@@ -4,4 +4,8 @@ class ClassesController < ApplicationController
 
   end
 
+  def new
+
+  end
+
 end
