@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SportsClub</title>
+    <title>Sports Club</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,13 +9,23 @@
   </head>
 
   <body>
-    =begin
-    Following 3 lines of code are links to navigate via app UI 
-    used with embeded Ruby code.
-    =end
-    <%= link_to 'home', root_path %>
-    <%= link_to 'about', about_path %>
-    <%= link_to 'new class', classes_new_path %>
-    <%= yield %>
+    <!--
+    Following lines of code is the materialize navbar.
+    -->
+    <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Sports Club</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Classes checklist</a></li>
+            <li><a href="#">Audits list</a></li>
+            <li><a href="#">Account</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
