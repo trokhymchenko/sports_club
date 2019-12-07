@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    =begin
+    Following 3 lines of code are links to navigate via app UI 
+    used with embeded Ruby code.
+    =end
+    <%= link_to 'home', root_path %>
+    <%= link_to 'about', about_path %>
+    <%= link_to 'new class', classes_new_path %>
     <%= yield %>
   </body>
 </html>
