@@ -21,6 +21,22 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @workout.update(workout_params)
+      redirect_to workout_path(@workout)
+    else
+      render 'new'
+    end
+  end
+
+  def destroy
+    @workout.destroy
+    redirect_to root_path
+  end
+
   private
 
   def workout_params
