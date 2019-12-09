@@ -39,6 +39,12 @@ class WorkoutsController < ApplicationController
     redirect_to root_path
   end
 
+  def complete
+    @workout = Workout.find(params[:id])
+    @workout.update_attribute(:completed_at, Time.now)
+    redirect_to root_path
+  end
+
   private
 
   def workout_params
@@ -48,5 +54,4 @@ class WorkoutsController < ApplicationController
   def find_workout
     @workout = Workout.find(params[:id])
   end
-
 end
