@@ -2,18 +2,20 @@ class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:show, :edit, :update, :destroy]
 
   def index
-    @workouts = Workout.paginate(:page => params[:page], :per_page=>10)
+    if user_signed_in?
+      @workouts = Workout.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page=>10)
+    end
   end
 
   def show
   end
 
   def new
-    @workout = Workout.new
+    @workout = current_user.workouts.build
   end
 
   def create
-    @workout = Workout.new(workout_params)
+    @workout = current_user.workouts.build(workout_params)
     if @workout.save
       redirect_to root_path
     else
