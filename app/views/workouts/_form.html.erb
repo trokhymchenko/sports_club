@@ -1,8 +1,18 @@
-<%= simple_form_for @workout do |f| %>
-  <%= f.input :title, label: "Workout name" %>
-  <%= f.input :description %>
-  <%= f.input :question_title, label: "Ask question" %>
-  <%= f.input :question_description %>
-  <%= f.button :submit %>
-<% end %>
-<%= link_to "Cancel", root_path %>
+<div class="row"
+  <%= simple_form_for(@workout, html: {class: "col s12"}) do |f| %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.input :title, label: "Workout name", autofocus: true %>
+        <%= f.input :description %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.input :question_title, label: "Ask question" %>
+        <%= f.input :question_description %>
+      </div>
+    </div>
+    <%= f.button :submit %>
+  <% end %>
+  <%= link_to "Cancel", root_path %>
+</div>
