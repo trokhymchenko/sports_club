@@ -1,5 +1,7 @@
 <h2><%= @workout.title %></h2>
 <p><%= @workout.description %> </p>
+<p><%= @workout.question_title %> </p>
+<p><%= @workout.question_description %> </p>
 
 <%= link_to "Back", root_path %>
 <%= link_to "Edit", edit_workout_path(@workout) %>

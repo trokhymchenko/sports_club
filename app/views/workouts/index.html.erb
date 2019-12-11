@@ -26,6 +26,8 @@
             <div class="card-content white-text">
               <span class="card-title"><%= link_to workout.title, workout %></span>
               <p><%= workout.description %></p>
+              <p><%= workout.question_title %></p>
+              <p><%= workout.question_description %></p>
             </div>
             <div class="card-action">
               <a><%= link_to "Mark as Complete", complete_workout_path(workout), method: :patch %></a>
