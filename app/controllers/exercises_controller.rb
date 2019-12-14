@@ -3,7 +3,7 @@ before_action :find_exercise, only: [:show, :edit, :update, :destroy]
 
   def index
     if user_signed_in?
-      @exercises = Exercise.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page=>10)
+      @exercises = Exercise.where(:workout_id => current_user.id).paginate(:page => params[:page], :per_page=>10)
     end
   end
 

@@ -1,6 +1,6 @@
 class Exercise < ApplicationRecord
-  has_many :exercise_workouts
-  has_many :workouts, through: :exercise_workouts
+  #has_many :exercise_workouts
+  has_one :workout
   
   validates :title, presence: true, length: { minimum: 12, maximum: 40 }
   validates :description, presence: true
