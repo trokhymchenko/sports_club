@@ -11,6 +11,7 @@
             <p><%= exercise.title %></p>
             <p><%= exercise.description %></p>
           </div>
+        <% end %>
           <div class="card-action">
             <a><%= link_to "Delete", exercise, method: :delete, data: { confirm: "Are you sure?"} %></a>
           </div>

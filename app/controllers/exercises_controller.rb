@@ -1,14 +1,18 @@
 class ExercisesController < ApplicationController
 before_action :find_exercise, only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!, except: [:index]
 
   def index
     if user_signed_in?
-      @exercises = Exercise.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page=>10)
+      @exercises = Exercise.where(:workout.id => current_user.id).paginate(:page => params[:page], :per_page=>10)
     end
   end
 
   def new
     @exercise = current_user.exercises.build
+  end
+
+  def show
   end
 
   def create
@@ -18,9 +22,6 @@ before_action :find_exercise, only: [:show, :edit, :update, :destroy]
     else
       render 'new'
     end
-  end
-
-  def show
   end
 
   def edit

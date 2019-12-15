@@ -1,12 +1,10 @@
 <h2><%= @workout.title %></h2>
 <p><%= @workout.description %> </p>
-<p><%= @workout.question_title %> </p>
-<p><%= @workout.question_description %> </p>
 
 <% if @workout.exercises.any? %>
-  <p>Exercises: <%= render @workout.exercises %>
+  <p>Exercises: <%= render @workout.exercises %></p>
 <% end %>
 
 <%= link_to "Back", root_path %>
 <%= link_to "Edit", edit_workout_path(@workout) %>
-<%= link_to "Add new Exercise", new_exercise_path %>
+<%= link_to "Add new Exercise", new_exercise_path(@workout.id) %>
