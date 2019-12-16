@@ -29,18 +29,16 @@
             <div class="card-action">
               <a><%= link_to "Mark as Complete", complete_workout_path(workout), method: :patch %></a>
               <a><%= link_to "Delete", workout, method: :delete, data: { confirm: "Are you sure?"} %></a>
-              <p>Created <%= time_ago_in_words(workout.created_at) %> ago!</p>
               <a><%= link_to "Add new Exercise", new_exercise_path(workout) %></a>
+              <p>Created <%= time_ago_in_words(workout.created_at) %> ago!</p>
             </div>
           </div>
         </div>
       <% end %>
     <% end %>
-    <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-        <li class="active"><%= will_paginate @workouts %></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-    </ul>
+    <div align="center">
+      <%= will_paginate @workouts %>
+    </div>
   </div>
 <% else %>
   <%= render 'layouts/static_landing_page' %>

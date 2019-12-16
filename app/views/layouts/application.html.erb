@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
   </head>
 
   <body>
@@ -29,7 +30,6 @@
               <% if user_signed_in? %>
               <li><%= link_to "Create Workout", new_workout_path %></li>
               <% end %>
-              <li><a href="#">Audits list</a></li>
               <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
           </div>

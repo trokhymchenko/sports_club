@@ -1,0 +1,17 @@
+<% obj.each do |exercise| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="article-title">
+        <%= link_to exercise.title, exercise_path(exercise) %>
+        </div>
+        <div class="article-body">
+          <%= truncate(exercise.description, length: 100) %>
+        </div>
+        <div class="card-action">
+          <a><%= link_to "Delete", exercise, method: :delete, data: { confirm: "Are you sure?"} %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

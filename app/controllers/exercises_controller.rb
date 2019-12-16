@@ -22,9 +22,6 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    # puts "in create #{@workout_id}"
-    # full_ex_params = exercise_params
-    # full_ex_params[:workout_id] = @workout_id
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
       redirect_to root_path

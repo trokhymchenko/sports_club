@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       patch :complete
     end
   end
-  resources :exercises 
+  resources :exercises
 
   root 'workouts#index'
   get 'workouts/new', to: 'workouts#new'
