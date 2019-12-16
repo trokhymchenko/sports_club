@@ -1,4 +1,4 @@
-<div class="row"
+<div class="row">
   <%= simple_form_for(@workout, html: {class: "col s12"}) do |f| %>
     <div class="row">
       <div class="input-field col s12">
@@ -6,12 +6,6 @@
         <%= f.input :description, label: "Workout description" %>
       </div>
     </div>
-<!--    <div class="row">
-      <div class="input-field col s12">
-        <#%= f.input :question_title, label: "Add Exercise" %>
-        <#%= f.input :question_description, label: "Exercise description" %>
-      </div>
-    </div> -->
     <%= f.button :submit %>
   <% end %>
 </div>

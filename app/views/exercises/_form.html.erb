@@ -1,12 +1,13 @@
-<div class="row"
+<div class="row">
   <%= simple_form_for(@exercise, html: {class: "col s12"}) do |f| %>
     <div class="row">
       <div class="input-field col s12">
         <%= f.input :title, label: "Exercise name", autofocus: true %>
         <%= f.input :description, label: "Exercise description" %>
+        <%= f.input :workout_id, :as => :hidden, :input_html => { :value => @exercise.workout_id } %>
       </div>
     </div>
     <%= f.button :submit %>
-  <% end %>
-</div>
+<% end %>
   <%= link_to "Cancel", root_path %>
+</div>

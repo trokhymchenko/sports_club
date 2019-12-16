@@ -30,6 +30,7 @@
               <a><%= link_to "Mark as Complete", complete_workout_path(workout), method: :patch %></a>
               <a><%= link_to "Delete", workout, method: :delete, data: { confirm: "Are you sure?"} %></a>
               <p>Created <%= time_ago_in_words(workout.created_at) %> ago!</p>
+              <a><%= link_to "Add new Exercise", new_exercise_path(workout) %></a>
             </div>
           </div>
         </div>
