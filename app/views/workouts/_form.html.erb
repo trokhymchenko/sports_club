@@ -1,13 +1,20 @@
-<div class="row">
-  <%= simple_form_for(@workout, html: {class: "col s12"}) do |f| %>
-    <div class="row">
-      <div class="input-field col s12">
-        <%= f.input :title, label: "Workout name", autofocus: true %>
-        <%= f.input :description, label: "Workout description" %>
+<div class="container">
+  <div class="row center, sign-up-form">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <div class="row">
+          <%= simple_form_for(@workout, html: {class: "col s12"}) do |f| %>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.input :title, label: "Workout name", autofocus: true %>
+                <%= f.input :description, label: "Workout description" %>
+              </div>
+            </div>
+            <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <%= f.button :submit %>
-  <% end %>
+  </div>
 </div>
-<%= link_to "Cancel", root_path %>
-<%= link_to "Add new Exercise", new_exercise_path %>

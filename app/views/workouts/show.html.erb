@@ -8,9 +8,9 @@
         </div>
       </div>
       <div class="card-action">
-        <a><%= link_to "Back", root_path %></a>
-        <a><%= link_to "Edit Workout", edit_workout_path(@workout) %></a>
-        <a><%= link_to "Add new Exercise", new_exercise_path(@workout.id) %></a>
+        <a><%= link_to '<i class="small material-icons">arrow_back</i>'.html_safe, root_path %></a>
+        <a><%= link_to '<i class="small material-icons">edit</i>'.html_safe, edit_workout_path(@workout) %></a>
+        <a><%= link_to '<i class="small material-icons">playlist_add</i>'.html_safe, new_exercise_path(@workout.id) %></a>
       </div>
     </div>
   </div>

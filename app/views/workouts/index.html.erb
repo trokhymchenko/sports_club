@@ -1,7 +1,12 @@
 <% if user_signed_in? %>
   <div class="row">
     <div class="col s12">
-      <h3 class="center-align"> Workouts Checklist </h3>
+      <h3 class="center-align"> Workouts List </h3>
+    </div>
+    <div align="center">
+      <% if user_signed_in? %>
+        Add new Workout! -> <%= link_to '<i class="small material-icons">add_box</i>'.html_safe, new_workout_path %>
+      <% end %>
     </div>
   </div>
   <div class="container">
@@ -14,7 +19,7 @@
               <p><%= workout.description %></p>
             </div>
             <div class="card-action">
-              <a><%= link_to "Delete", workout, method: :delete, data: { confirm: "Are you sure?"} %></a>
+              <a><%= link_to '<i class="small material-icons">delete</i>'.html_safe, workout, method: :delete, data: { confirm: "Are you sure?"} %></a>
               <p>Completed <%= time_ago_in_words(workout.completed_at) %> ago!</p>
             </div>
           </div>
@@ -27,9 +32,9 @@
               <p><%= workout.description %></p>
             </div>
             <div class="card-action">
-              <a><%= link_to "Mark as Complete", complete_workout_path(workout), method: :patch %></a>
-              <a><%= link_to "Delete", workout, method: :delete, data: { confirm: "Are you sure?"} %></a>
-              <a><%= link_to "Add new Exercise", new_exercise_path(workout) %></a>
+              <a><%= link_to '<i class="small material-icons">done</i>'.html_safe, complete_workout_path(workout), method: :patch %></a>
+              <a><%= link_to '<i class="small material-icons">delete</i>'.html_safe, workout, method: :delete, data: { confirm: "Are you sure?"} %></a>
+              <a><%= link_to '<i class="small material-icons">playlist_add</i>'.html_safe, new_exercise_path(workout) %></a>
               <p>Created <%= time_ago_in_words(workout.created_at) %> ago!</p>
             </div>
           </div>
