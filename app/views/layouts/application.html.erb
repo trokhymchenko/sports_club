@@ -17,6 +17,7 @@
       <ul id="dropdown1" class="dropdown-content">
         <li><%= link_to "Sign up", new_user_registration_path %></li>
           <% if current_user.present? %>
+            <li><%= link_to "Audits", audits_path %></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <% else %>
             <li><%= link_to "Log In", new_user_session_path %></li>

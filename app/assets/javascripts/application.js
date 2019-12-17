@@ -19,3 +19,8 @@
 $(document).on('turbolinks:load', function() {
   $(".dropdown-trigger").dropdown();
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+  });

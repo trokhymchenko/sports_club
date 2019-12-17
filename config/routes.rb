@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
   resources :exercises
+  resources :audits
 
   root 'workouts#index'
   get 'workouts/new', to: 'workouts#new'
