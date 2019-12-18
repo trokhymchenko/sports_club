@@ -1,6 +1,5 @@
 class ExercisesController < ApplicationController
  before_action :find_exercise, only: [:show, :edit, :update, :destroy]
- # before_action :authenticate_user!, except: [:index]
 
   def index
     if user_signed_in?
@@ -24,7 +23,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
-      redirect_to root_path
+      redirect_to workouts_path
     else
       render 'new'
     end

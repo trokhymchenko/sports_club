@@ -1,4 +1,5 @@
 class AuditsController < ApplicationController
+  before_action :find_audit, only: [:show, :edit, :update, :destroy]
 
   def index
     if user_signed_in?
@@ -11,9 +12,6 @@ class AuditsController < ApplicationController
   def new
     if user_signed_in?
       @audit = current_user.audits.build
-    #  @audit_id = params[:format].to_i
-    #  @audit = @audits.build
-    #  @audit[:workout_id] = @audit_id
     end
   end
 
@@ -39,15 +37,27 @@ class AuditsController < ApplicationController
     end
   end
 
+  def update
+    if @audit.update(audit_params)
+      redirect_to audit_path(@audit)
+    else
+      render 'new'
+    end
+  end
+
   def destroy
     @audit.destroy
-    redirect_to root_path
+    redirect_to audits_path
   end
 
   private
 
   def audit_params
     params.require(:audit).permit(:name)
+  end
+
+  def find_audit
+    @audit = Audit.find(params[:id])
   end
 
 end
