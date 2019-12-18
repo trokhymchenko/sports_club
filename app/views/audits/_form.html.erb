@@ -1,1 +1,21 @@
-This is form to create audit!
+<div class="container">
+  <div class="row center, sign-up-form">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <div class="row">
+          <%= simple_form_for @audit, :url=>{:action =>"create"} do |f| %>
+            <%= f.text_field :name, label: "Audit name" %>
+            <% @audit.workouts.each do |sc| %>
+              <div>
+                <%= check_box_tag :workouts_ids, workout_id, @audit.workouts.include?(sc), :name => 'audit[workout_ids][]' %>
+                <%= label_tag :workout_ids, sc.name %>
+              </div>
+            <% end %>
+            <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 @import "materialize";
 
+
 body {
     display: flex;
     min-height: 100vh;
@@ -9,3 +10,7 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+.input_checkbox input {
+  width: auto !important;
+}
