@@ -1,6 +1,8 @@
 class Workout < ApplicationRecord
   belongs_to :user
   has_many :exercises
+  has_many :audit_workouts
+  has_many :audits, through: :audit_workouts
 
   validates :title, presence: true, length: { maximum: 40 }
   validates :description, presence: true

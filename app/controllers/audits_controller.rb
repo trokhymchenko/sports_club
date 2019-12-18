@@ -17,8 +17,6 @@ class AuditsController < ApplicationController
 
   def create
     @audit = current_user.audits.build(audit_params)
-    assigned_workouts = Workout.find(params[:audit][:workout_ids]) rescue []
-    @audit.workouts = assigned_workouts
     if @audit.save
       flash[:success] = "Audit was successfully created"
       redirect_to audits_path(@audit)
@@ -53,7 +51,7 @@ class AuditsController < ApplicationController
   private
 
   def audit_params
-    params.require(:audit).permit(:name)
+    params.require(:audit).permit(:name, workouts_ids: [])
   end
 
   def find_audit
