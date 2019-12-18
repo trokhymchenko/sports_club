@@ -8,7 +8,7 @@
               <div class="col-xs-8 col-xs-offset-2">
                 <div class="well well-lg">
                   <div class="article-title">
-                    <%= link_to workout.title, workout_path(exercise) %>
+                    <%= link_to workout.title, workout_path(workout) %>
                   </div>
                   <div class="article-body">
                     <%= truncate(workout.description, length: 100) %>

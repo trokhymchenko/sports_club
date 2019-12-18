@@ -1,18 +1,26 @@
-<div class="row">
-  <div class="col s12">
-    <h3 class="center-align"> Audits List </h3>
-    <div align="center">
-      <a><%= link_to "Fill in Workouts", new_audit_path %></a>
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Audit name</span>
-          <p>Audit description!</p>
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="center-align"> Audits List </h3>
+      <div align="center">
+        <a><%= link_to "Fill in Workouts", new_audit_path %></a>
+      </div>
+      <% @audits.each do |audit| %>
+        <div class="col s6 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"><%= link_to audit.name, audit %></span>
+            </div>
+            <div class="card-action">
+              <a><%= link_to '<i class="small material-icons">delete</i>'.html_safe, audit, method: :delete, data: { confirm: "Are you sure?"} %></a>
+              <p>Created <%= time_ago_in_words(audit.created_at) %> ago!</p>
+            </div>
+          </div>
         </div>
-        <div class="card-action">
-          <a href="#">delete audit</a>
-          <a href="#">edit audit</a>
-        </div>
+      <% end %>
+      <div align="center">
+        <%= will_paginate @audits %>
       </div>
     </div>
   </div>
-</div>
+<% end %>

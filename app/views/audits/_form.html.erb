@@ -3,16 +3,18 @@
     <div class="col s12 m12 l12">
       <div class="card-panel">
         <div class="row">
-          <%= simple_form_for @audit, :url=>{:action =>"create"} do |f| %>
+          <%= simple_form_for @audit, html: {class: "col s12"} do |f| %>
+            <%= f.label :Audit_name %>
             <%= f.text_field :name, label: "Audit name" %>
-            <% @audit.workouts.each do |sc| %>
-              <div>
-                <%= check_box_tag :workouts_ids, workout_id, @audit.workouts.include?(sc), :name => 'audit[workout_ids][]' %>
-                <%= label_tag :workout_ids, sc.name %>
+<!--              <#%= f.collection_check_boxes :workout_ids, Workout.all, :id, :title do |cb| %>
+                <#% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+              <#% end %> -->
+              <div class="col s12 m12 l12">
+                <div class="row">
+                  <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+                  <%= f.button :submit %>
               </div>
-            <% end %>
-            <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
-            <%= f.button :submit %>
+            </div>
           <% end %>
         </div>
       </div>
