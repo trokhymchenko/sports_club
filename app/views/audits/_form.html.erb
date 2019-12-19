@@ -10,8 +10,10 @@
                 <div class="row">
                   <div class="col-sm-offset-2 col-sm-8">
                     <%= f.collection_check_boxes :workout_ids, Workout.all, :id, :title do |cb| %>
-                      <% cb.label(class: "check_box") {cb.check_box(class: "check_box") + cb.text} %>
-                    <% end %>
+                      <%= cb.check_box(class: "check_box")%>
+                        <span><%=cb.text%></span>
+                        <br>
+                      <% end %>
                   </div>
                 </div>
               </div>

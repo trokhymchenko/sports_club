@@ -13,3 +13,9 @@ body {
 .input_checkbox input {
   width: auto !important;
 }
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
