@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       patch :complete
     end
   end
-  resources :exercises
+  resources :exercises do
+    member do
+      patch :complete
+    end
+  end
   resources :audits
 
   root 'workouts#index'

@@ -10,7 +10,7 @@ class WorkoutsController < ApplicationController
 
   def show
     @workout = Workout.find(params[:id])
-    @exercises = @workout.exercises
+    @exercises = @workout.exercises.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -27,9 +27,11 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    @workout = Workout.find(params[:id])
   end
 
   def update
+    @workout = Workout.find(params[:id])
     if @workout.update(workout_params)
       redirect_to workout_path(@workout)
     else

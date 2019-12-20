@@ -4,8 +4,6 @@ class AuditsController < ApplicationController
   def index
     if user_signed_in?
       @audits = Audit.paginate(page: params[:page], per_page: 10)
-      @audit_id = params[:format].to_i
-      @audit = Audit.new
     end
   end
 
@@ -31,7 +29,6 @@ class AuditsController < ApplicationController
   def show
     if user_signed_in?
       @audit = Audit.find(params[:id])
-      @workouts = @current_user.workouts
     end
   end
 
@@ -51,7 +48,7 @@ class AuditsController < ApplicationController
   private
 
   def audit_params
-    params.require(:audit).permit(:name, workouts_ids: [])
+    params.require(:audit).permit(:name, :workouts_ids )
   end
 
   def find_audit

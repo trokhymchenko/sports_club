@@ -40,6 +40,12 @@ class ExercisesController < ApplicationController
     end
   end
 
+ def complete
+   @exercise = Exercise.find(params[:id])
+   @exercise.update_attribute(:completed_at, Time.now)
+   redirect_to workouts_path
+ end
+
   def destroy
     @exercise.destroy
     redirect_to root_path

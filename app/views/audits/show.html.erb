@@ -13,4 +13,7 @@
     </div>
   </div>
 </div>
-<%= render "workouts/workout", obj: @workouts %>
+
+<% if @audit.workouts.any? %>
+  <p>Workouts: <%= render @audit.workouts %></p>
+<% end %>

@@ -5,4 +5,9 @@ class Exercise < ApplicationRecord
   validates :description, presence: true
   validates_uniqueness_of :title
   validates_uniqueness_of :description
+
+  def completed?
+    !completed_at.blank?
+  end
+
 end
