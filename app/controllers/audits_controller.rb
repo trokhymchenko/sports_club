@@ -14,12 +14,14 @@ class AuditsController < ApplicationController
   end
 
   def create
-    @audit = current_user.audits.build(audit_params)
-    if @audit.save
-      flash[:success] = "Audit was successfully created"
-      redirect_to audits_path(@audit)
-    else
-      render 'new'
+    if user_signed_in?
+      @audit = current_user.audits.build(audit_params)
+      if @audit.save
+        flash[:success] = "Audit was successfully created"
+        redirect_to audits_path(@audit)
+      else
+        render 'new'
+      end
     end
   end
 
@@ -48,7 +50,7 @@ class AuditsController < ApplicationController
   private
 
   def audit_params
-    params.require(:audit).permit(:name, :workouts_ids )
+    params.require(:audit).permit(:name, workout_ids: [])
   end
 
   def find_audit
