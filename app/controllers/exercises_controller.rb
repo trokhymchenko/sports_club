@@ -48,7 +48,10 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise.destroy
-    redirect_to root_path
+    respond_to do |f|
+      f.js
+      f.json {head :no_content}
+    end
   end
 
   private

@@ -11,6 +11,7 @@ class WorkoutsController < ApplicationController
   def show
     @workout = Workout.find(params[:id])
     @exercises = @workout.exercises.paginate(page: params[:page], per_page: 5)
+    @exercise = Exercise.new
   end
 
   def new

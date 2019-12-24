@@ -27,11 +27,31 @@
         <div class="card-action">
           <a><%= link_to '<i class="small material-icons">arrow_back</i>'.html_safe, root_path %></a>
           <a><%= link_to '<i class="small material-icons">edit</i>'.html_safe, edit_workout_path(@workout) %></a>
-          <a><%= link_to '<i class="small material-icons">playlist_add</i>'.html_safe, new_exercise_path(@workout.id) %></a>
         </div>
       </div>
     </div>
   </div>
   <p><%= render "exercises/exercise", obj: @exercises %></p>
+  <div class="container">
+    <div class="row center, sign-up-form">
+      <div class="col s12 m12 l12">
+        <div class="card-panel">
+          <div class="row">
+            <%= simple_form_for(@exercise, html: {class: "col s12"}) do |f| %>
+              <div class="row">
+                <div class="input-field col s12">
+                  <%= f.input :title, label: "Exercise name", autofocus: true %>
+                  <%= f.input :description, label: "Exercise description" %>
+                  <%= f.input :workout_id, :as => :hidden, :input_html => { :value => @exercise.workout_id } %>
+                </div>
+              </div>
+              <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+              <%= f.button :submit %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
