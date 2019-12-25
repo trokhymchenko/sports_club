@@ -48,9 +48,10 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise.destroy
-    respond_to do |f|
-      f.js
-      f.json {head :no_content}
+    respond_to do |format|
+      format.js
+      format.html { redirect_to workout_url, notice: 'Exercise was deleted' }
+      format.json { head :no_content }
     end
   end
 

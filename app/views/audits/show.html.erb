@@ -15,5 +15,36 @@
 </div>
 
 <% if @audit.workouts.any? %>
-  <p>Workouts: <%= render @audit.workouts %></p>
+  <div>
+    <% @audit.workouts.each do |workout| %>
+      <h4><%= workout.title %></h4>
+      <table class="highlight">
+        <thead>
+        <tr>
+          <th>Exercise Title</th>
+          <th>Exercise Description</th>
+          <th>Completed</th>
+          <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% workout.exercises.each do |exercise| %>
+          <tr>
+            <td><%= exercise.title %></td>
+            <td><%= exercise.description %></td>
+            <td>
+              <select id="select" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="na">N/A</option>
+              </select>
+            </td>
+            <td><textarea class="materialize-textarea"></textarea></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
 <% end %>

@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   root 'workouts#index'
   get 'workouts/new', to: 'workouts#new'
   get 'about', to: 'pages#about'
-    # post 'exercise', to: 'exercise#create'
+ # post 'exercise', to: 'exercise#create'
 end

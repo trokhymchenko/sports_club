@@ -14,6 +14,7 @@ class WorkoutsController < ApplicationController
     @exercise = Exercise.new
   end
 
+
   def new
     @workout = current_user.workouts.build
   end

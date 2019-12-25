@@ -37,7 +37,7 @@
       <div class="col s12 m12 l12">
         <div class="card-panel">
           <div class="row">
-            <%= simple_form_for(@exercise, html: {class: "col s12"}) do |f| %>
+            <%= simple_form_for(@exercise, html: {class: "col s12"}, remote: true)  do |f| %>
               <div class="row">
                 <div class="input-field col s12">
                   <%= f.input :title, label: "Exercise name", autofocus: true %>

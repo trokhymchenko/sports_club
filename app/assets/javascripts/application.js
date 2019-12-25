@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require jquery
+//= require rails-ujs
 //= require materialize
 //= require turbolinks
 //= require_tree .
@@ -24,3 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, options);
   });
+
+$('.delete').bind('ajax:success', function () {
+    $(this).closest('tr').fadeOut();
+});
