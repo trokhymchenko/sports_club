@@ -23,7 +23,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
-      redirect_to workouts_path
+      redirect_to controller: "workouts", action: "show", id: @exercise.workout_id
     else
       render 'new'
     end
@@ -43,15 +43,12 @@ class ExercisesController < ApplicationController
  def complete
    @exercise = Exercise.find(params[:id])
    @exercise.update_attribute(:completed_at, Time.now)
-   redirect_to workouts_path
+   redirect_to controller: "workouts", action: "show", id: @exercise.workout_id
  end
 
   def destroy
-    @exercise.destroy
-    respond_to do |format|
-      format.js
-      format.html { redirect_to workout_url, notice: 'Exercise was deleted' }
-      format.json { head :no_content }
+    if @exercise.destroy
+    redirect_to controller: "workouts", action: "show", id: @exercise.workout_id
     end
   end
 
