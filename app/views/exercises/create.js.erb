@@ -1,0 +1,3 @@
+$('#exercises').append("<%= escape_javascript(render "exercises/exercise_single", exercise: @exercise) %>");
+$('#exercise_title').val('');
+$('#exercise_description').val('');

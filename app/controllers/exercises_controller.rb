@@ -23,10 +23,14 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
-      redirect_to controller: "workouts", action: "show", id: @exercise.workout_id
+      respond_to do |format|
+        format.js
+        format.json { render json: @exercise, status: :created }
+        end
     else
       render 'new'
-    end
+      end
+
   end
 
   def edit
