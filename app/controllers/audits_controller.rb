@@ -32,6 +32,7 @@ class AuditsController < ApplicationController
     if user_signed_in?
       @audit = Audit.find(params[:id])
     end
+    @audit_exercises = AuditExercise.new
   end
 
   def update

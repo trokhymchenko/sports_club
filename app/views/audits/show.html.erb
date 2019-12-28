@@ -14,39 +14,38 @@
   </div>
 </div>
 
-<% if @audit.workouts.any? %>
-  <div>
-    <% @audit.workouts.each do |workout| %>
-      <h4><%= workout.title %></h4>
-      <table class="highlight">
-        <thead>
-        <tr>
-          <th>Exercise Title</th>
-          <th>Exercise Description</th>
-          <th>Completed</th>
-          <th>Comment</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% workout.exercises.each do |exercise| %>
+<%= simple_form_for @audit_exercises do |f| %>
+  <% if @audit.workouts.any? %>
+    <div>
+      <% @audit.workouts.each do |workout| %>
+        <h4><%= workout.title %></h4>
+        <table class="highlight">
+          <thead>
           <tr>
-            <td><%= exercise.title %></td>
-            <td><%= exercise.description %></td>
-            <td>
-              <select id="select" class="browser-default">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="na">N/A</option>
-              </select>
-            </td>
-            <td><textarea class="materialize-textarea"></textarea></td>
-            <td><button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            </button></td>
+            <th>Exercise Title</th>
+            <th>Exercise Description</th>
+            <th>Completed</th>
+            <th>Comment</th>
           </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% end %>
-  </div>
+          </thead>
+          <tbody>
+          <% workout.exercises.each do |exercise| %>
+            <tr>
+              <td><%= exercise.title %></td>
+              <td><%= exercise.description %></td>
+              <td>
+                <select id="select" class="browser-default">
+                  <option value="" disabled selected>Choose your option</option>
+                  <%= f.input :complete, as: :select %>
+                </select>
+              </td>
+              <td><%= f.input :comment, as: :text %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

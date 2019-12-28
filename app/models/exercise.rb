@@ -1,6 +1,9 @@
 class Exercise < ApplicationRecord
   has_one :workout
 
+  has_many :audit_exercises
+  has_many :audits, through: :audit_exercises
+
   validates :title, presence: true, length: { minimum: 12, maximum: 40 }
   validates :description, presence: true
   validates_uniqueness_of :title
