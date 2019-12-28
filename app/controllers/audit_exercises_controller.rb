@@ -9,13 +9,14 @@ class AuditExercisesController < ApplicationController
   end
 
   def create
-    @audit_exercise = audit_exercises.build(audit_exercises_params)
-    if @audit_exercise.save
+    @audit_exercise = AuditExercise.new(audit_exercises_params)
+    @audit_exercise.save
       redirect_to root_path
-    else
-      render 'new'
     end
-  end
+
+    def show
+
+    end
 
   private
 

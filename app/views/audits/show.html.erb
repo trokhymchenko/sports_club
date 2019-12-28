@@ -36,7 +36,8 @@
               <td>
                 <select id="select" class="browser-default">
                   <option value="" disabled selected>Choose your option</option>
-                  <%= f.input :complete, as: :select %>
+                  <option><%= f.input :complete, as: :select %></option>
+                  <option value="na">N/A</option>
                 </select>
               </td>
               <td><%= f.input :comment, as: :text %></td>
