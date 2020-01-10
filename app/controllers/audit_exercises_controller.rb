@@ -5,7 +5,8 @@ class AuditExercisesController < ApplicationController
   end
 
   def new
-    @audit_exercise = audit_exercises.build
+    @audit_exercises = Notice.new
+    @audit_exercises.entity_roles.build(name: 'submitter').build_entity
   end
 
   def create

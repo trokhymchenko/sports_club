@@ -29,20 +29,19 @@ class ExercisesController < ApplicationController
         end
     else
       render 'new'
-      end
-
+    end
   end
 
   def edit
   end
 
-  def update
-    if @exercise.update(exercise_params)
-      redirect_to exercise_path(@exercise)
-    else
-      render 'new'
-    end
-  end
+ def update
+   if @exercise.update(exercise_params)
+     redirect_to exercise_path(@exercise) unless params[:commit] == 'Update Exercise'
+   else
+     render 'new'
+   end
+ end
 
  def complete
    @exercise = Exercise.find(params[:id])
@@ -58,9 +57,9 @@ class ExercisesController < ApplicationController
 
   private
 
-  def exercise_params
-    params.require(:exercise).permit(:title, :description, :workout_id)
-  end
+ def exercise_params
+   params.require(:exercise).permit(:title, :description, :workout_id, :complete, :comment)
+ end
 
   def find_exercise
     @exercise = Exercise.find(params[:id])

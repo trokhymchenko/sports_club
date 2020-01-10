@@ -3,7 +3,7 @@
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
         <div style="text-align:center">
-        <span class="card-title"><%= @audit.name %></span>
+          <span class="card-title"><%= @audit.name %></span>
         </div>
       </div>
       <div class="card-action">
@@ -14,11 +14,11 @@
   </div>
 </div>
 
-<%= simple_form_for @audit_exercises do |f| %>
-  <% if @audit.workouts.any? %>
-    <div>
-      <% @audit.workouts.each do |workout| %>
-        <h4><%= workout.title %></h4>
+<% if @audit.workouts.any? %>
+  <div>
+    <% @audit.workouts.each do |workout| %>
+      <h4><%= workout.title %></h4>
+      <div class="row">
         <table class="highlight">
           <thead>
           <tr>
@@ -30,23 +30,25 @@
           </thead>
           <tbody>
           <% workout.exercises.each do |exercise| %>
-            <tr>
-              <td><%= exercise.title %></td>
-              <td><%= exercise.description %></td>
-              <td>
-                <select id="select" class="browser-default">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option><%= f.input :complete, as: :select %></option>
-                  <option value="na">N/A</option>
-                </select>
-              </td>
-              <td><%= f.input :comment, as: :text %></td>
-            </tr>
+            <%= simple_form_for exercise do |exercise_form| %>
+              <tr>
+                <td><%= exercise.title %></td>
+                <td><%= exercise.description %></td>
+                <td>
+                  <%= exercise_form.select :complete, options_for_select({:Yes => "yes", :No => "no", "N/A" => "na", "Choose your option" => ""}, exercise.complete.nil? ? "" : exercise.complete), {}, class: "browser-default" %>
+                </td>
+                <td>
+                  <%= exercise_form.text_area :comment, class: "materialize-textarea" %>
+                </td>
+                <td>
+                  <%= exercise_form.button :submit %>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
           </tbody>
         </table>
-        <%= f.button :submit %>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

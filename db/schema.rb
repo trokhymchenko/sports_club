@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191228081909) do
+ActiveRecord::Schema.define(version: 20200110110218) do
 
   create_table "audit_exercises", force: :cascade do |t|
     t.integer "audit_id"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20191228081909) do
     t.datetime "updated_at", null: false
     t.integer "workout_id"
     t.datetime "completed_at"
+    t.text "complete"
+    t.text "comment"
   end
 
   create_table "users", force: :cascade do |t|
